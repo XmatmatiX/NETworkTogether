@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NETworkTogether.Infrastructure\NETworkTogether.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

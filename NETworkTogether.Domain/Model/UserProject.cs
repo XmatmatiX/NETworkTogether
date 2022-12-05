@@ -13,6 +13,7 @@ namespace NETworkTogether.Domain.Model
         public virtual User User { get; set; }
         public int ProjectID { get; set; }
         public virtual Project Project { get; set; }
+        public string Rank { get; set; }
 
 
     }
