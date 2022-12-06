@@ -14,7 +14,6 @@ namespace NETworkTogether.Domain.Model
         public int ProjectID { get; set; }
         public virtual Project Project { get; set; }
         public string Rank { get; set; }
-
-
+        public bool CanEdit { get; set; }
     }
 }
