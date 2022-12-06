@@ -10,39 +10,86 @@ namespace NETworkTogether.Infrastructure.Repository
 {
     public class PostRepository : IPostRepository
     {
-        public int AddComment(int postId, Comment comment)
+        private readonly Context _context;
+
+        public PostRepository(Context context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+
+        public int AddComment(Comment comment)
+        {
+            if (comment == null)
+            {
+                return -1;
+            }
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
+            return comment.ID;
         }
 
         public int CreatePost(Post post)
         {
-            throw new NotImplementedException();
+            if (post == null)
+            {
+                return -1;
+            }
+            _context.Posts.Add(post);
+            _context.SaveChanges();
+            return post.ID;
         }
 
         public void DeleteComment(int commentId)
         {
-            throw new NotImplementedException();
+            var check = _context.Comments.Where(c => c.ID == commentId).FirstOrDefault();
+            if (check == null)
+            {
+                return;
+            }
+            check.IsActive = false;
+            _context.Attach(check);
+            _context.Entry(check).Property("IsActive").IsModified = true;
+            _context.SaveChanges();
         }
 
         public void DeletePost(int postId)
         {
-            throw new NotImplementedException();
+            var check = _context.Posts.Where(p => p.ID == postId).FirstOrDefault();
+            if (check == null)
+            {
+                return;
+            }
+            check.IsActive = false;
+            _context.Attach(check);
+            _context.Entry(check).Property("IsActive").IsModified = true;
+            _context.SaveChanges();
         }
 
         public Post GetPost(int id)
         {
-            throw new NotImplementedException();
+            return _context.Posts.Where(p => p.ID == id).FirstOrDefault();
         }
 
         public IQueryable<Post> GetPosts()
         {
-            throw new NotImplementedException();
+            return _context.Posts;
         }
 
         public int UpdatePost(Post post)
         {
-            throw new NotImplementedException();
+            var check = _context.Posts.Where(p => p.ID == post.ID).FirstOrDefault();
+            if (check == null)
+            {
+                return -1;
+            }
+            check.Text = post.Text;
+            check.Title = post.Title;
+            _context.Attach(check);
+            _context.Entry(check).Property("Text").IsModified = true;
+            _context.Entry(check).Property("Title").IsModified = true;
+            _context.SaveChanges();
+            return post.ID;
         }
     }
 }

@@ -9,10 +9,10 @@ namespace NETworkTogether.Domain.Interface
 {
     public interface IUserRepository
     {
-        public IQueryable<Post> GetUserPosts(string userPosts);
+        public IQueryable<Post> GetUserPosts(string userId);
         public IQueryable<Project> GetUserProjects(string userId);
         public User GetUserData(string userId);
-        public int UpdateUserData(User user);
+        public string UpdateUserData(User user);
         public void DeleteUser(string userId);
 
     }

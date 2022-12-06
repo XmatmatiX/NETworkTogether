@@ -16,7 +16,7 @@ namespace NETworkTogether.Domain.Interface
         public int UpdatePost(Post post);
         public void DeletePost(int postId);
 
-        public int AddComment(int postId, Comment comment);
+        public int AddComment(Comment comment);
         public void DeleteComment(int commentId);
 
     }

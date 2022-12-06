@@ -20,12 +20,12 @@ namespace NETworkTogether.Domain.Interface
         public int DeleteProject(int projectId);
 
         public int AddUser(UserProject userProject);
-        public void RemoveUser(UserProject userProject);
+        public int RemoveUser(UserProject userProject);
         public int ChangeUserRank(UserProject userProject);
         public int AddProjectEntry(ProjectEntry projectEntry);
         public int AddProjectTask(ProjectTask projectTask);
-        public void DeleteProjectEntry(int projectEntryId);
-        public void DeleteProjectTask(int projectTaskId);
+        public int DeleteProjectEntry(int projectEntryId);
+        public int DeleteProjectTask(int projectTaskId);
         public int ChangeTaskState(ProjectTask projectTask);
 
 
